@@ -6,7 +6,7 @@ const APP_NAME = 'Rede Solidária';
 const DB_HOST = 'localhost';
 const DB_NAME = 'jonasa20_rede_solidaria';
 const DB_USER = 'jonasa20_rede_admin';
-const DB_PASS = '@Jonas123e4@';
+const DB_PASS = 'SENHA_AQUI';
 
 date_default_timezone_set('America/Sao_Paulo');
 require_once __DIR__ . '/database.php';
