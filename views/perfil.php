@@ -1,0 +1,11 @@
+<?php
+require_login();$u=current_user();$extra=[];
+if($u['tipo']==='ong'){$s=db()->prepare("SELECT * FROM ongs WHERE usuario_id=?");$s->execute([$u['id']]);$extra=$s->fetch()?:[];}elseif($u['tipo']==='solidario'){$s=db()->prepare("SELECT * FROM solidarios WHERE usuario_id=?");$s->execute([$u['id']]);$extra=$s->fetch()?:[];}
+if(is_post()){check_csrf();$nome=trim($_POST['nome']);if($nome===''){flash('error','Nome obrigatório.');}else{db()->prepare("UPDATE usuarios SET nome=? WHERE id=?")->execute([$nome,$u['id']]);$_SESSION['user']['nome']=$nome;
+if($u['tipo']==='ong')db()->prepare("UPDATE ongs SET nome_fantasia=?,cnpj=?,descricao=?,telefone=?,cidade=?,endereco=? WHERE usuario_id=?")->execute([$nome,trim($_POST['cnpj']??''),trim($_POST['descricao']??''),trim($_POST['telefone']??''),trim($_POST['cidade']??''),trim($_POST['endereco']??''),$u['id']]);
+if($u['tipo']==='solidario')db()->prepare("UPDATE solidarios SET telefone=?,cidade=?,descricao=? WHERE usuario_id=?")->execute([trim($_POST['telefone']??''),trim($_POST['cidade']??''),trim($_POST['descricao']??''),$u['id']]);
+flash('success','Perfil atualizado.');}redirect_to(url('perfil'));}
+$title='Meu perfil - '.APP_NAME;require __DIR__.'/../includes/header.php';?><div class="form"><h1>Meu perfil</h1><form method="post"><input type="hidden" name="csrf" value="<?=e(csrf())?>"><label>Nome<input name="nome" value="<?=e($u['nome'])?>" required></label><label>E-mail<input value="<?=e($u['email'])?>" disabled></label>
+<?php if($u['tipo']==='ong'):?><label>CNPJ<input name="cnpj" value="<?=e($extra['cnpj']??'')?>"></label><label>Descrição<textarea name="descricao"><?=e($extra['descricao']??'')?></textarea></label><label>Telefone<input name="telefone" value="<?=e($extra['telefone']??'')?>"></label><label>Cidade<input name="cidade" value="<?=e($extra['cidade']??'')?>"></label><label>Endereço<input name="endereco" value="<?=e($extra['endereco']??'')?>"></label>
+<?php else:?><label>Telefone<input name="telefone" value="<?=e($extra['telefone']??'')?>"></label><label>Cidade<input name="cidade" value="<?=e($extra['cidade']??'')?>"></label><label>Sobre você<textarea name="descricao"><?=e($extra['descricao']??'')?></textarea></label><?php endif;?>
+<button class="btn">Salvar</button></form></div><?php require __DIR__.'/../includes/footer.php'; ?>

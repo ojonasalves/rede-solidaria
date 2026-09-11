@@ -1,0 +1,14 @@
+[08-Sep-2026 19:04:43 America/Sao_Paulo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'COLOQUE_O_USUARIO_AQUI'@'localhost' (using password: YES) in /home2/jonasa20/app.projetoredesolidaria.online/config/database.php:8
+Stack trace:
+#0 /home2/jonasa20/app.projetoredesolidaria.online/config/database.php(8): PDO->__construct('mysql:host=loca...', 'COLOQUE_O_USUAR...', Object(SensitiveParameterValue), Array)
+#1 /home2/jonasa20/app.projetoredesolidaria.online/views/demandas.php(7): db()
+#2 /home2/jonasa20/app.projetoredesolidaria.online/index.php(7): require('/home2/jonasa20...')
+#3 {main}
+  thrown in /home2/jonasa20/app.projetoredesolidaria.online/config/database.php on line 8
+[08-Sep-2026 20:30:15 America/Fortaleza] PHP Parse error:  syntax error, unexpected token "`" in /home2/jonasa20/app.projetoredesolidaria.online/index.php on line 33
+[08-Sep-2026 20:30:19 America/Fortaleza] PHP Parse error:  syntax error, unexpected token "`" in /home2/jonasa20/app.projetoredesolidaria.online/index.php on line 33
+[08-Sep-2026 20:30:27 America/Fortaleza] PHP Parse error:  syntax error, unexpected token "`" in /home2/jonasa20/app.projetoredesolidaria.online/index.php on line 33
+[08-Sep-2026 20:30:58 America/Fortaleza] PHP Parse error:  syntax error, unexpected token "`" in /home2/jonasa20/app.projetoredesolidaria.online/index.php on line 33
+[08-Sep-2026 20:31:58 America/Fortaleza] PHP Parse error:  syntax error, unexpected token "`" in /home2/jonasa20/app.projetoredesolidaria.online/index.php on line 9
+[08-Sep-2026 20:58:52 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected identifier "LIKE" in /home2/jonasa20/app.projetoredesolidaria.online/views/demandas.php on line 30
+[08-Sep-2026 20:58:57 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected identifier "LIKE" in /home2/jonasa20/app.projetoredesolidaria.online/views/demandas.php on line 30

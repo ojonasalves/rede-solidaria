@@ -1,0 +1,1 @@
+</main><footer><div class="container">© <?=date('Y')?> Rede Solidária</div></footer></body></html>
